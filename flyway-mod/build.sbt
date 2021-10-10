@@ -7,7 +7,7 @@ libraryDependencies ++= Seq(
 )
 
 
-flywayUrl := "jdbc:postgresql://localhost:5432/user1"
-flywayUser := "user1"
-flywayPassword := "dm"
+flywayUrl := "jdbc:postgresql://localhost:5432/project1"
+flywayUser := "kasper"
+flywayPassword := "12345"
 flywayLocations := Seq("classpath:migration")
