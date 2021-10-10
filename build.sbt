@@ -54,8 +54,8 @@ flywayInfo := {
   (flywaymod / flywayClean).value
 }
 
-
 lazy val slick = taskKey[Seq[File]]("Generate Tables.scala")
+
 slick := {
   val dir = (Compile / sourceManaged) value
   val outputDir = dir / "slick"
