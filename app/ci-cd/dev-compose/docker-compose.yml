@@ -1,0 +1,14 @@
+version: '3.4'
+services:
+  psql:
+    image: postgres:13-alpine
+    restart: always
+    container_name: working-hours
+    #    volumes:
+    #      - ./postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: kasper
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: project1
+    ports:
+      - "5432:5432"
