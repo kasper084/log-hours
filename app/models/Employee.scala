@@ -30,7 +30,6 @@ case class Employee(id: Long,
 }
 
 object Employee {
-
   implicit val format: OFormat[Employee] = Json.format[Employee]
 
   def tupled: ((Long, String, String, String, String, Double, Instant, Instant)) =>
