@@ -6,10 +6,9 @@ import java.time.Instant
 
 case class EmployeeDTO(id: Long,
                        name: String,
-                       lastName: String,
-                       organisationName: String,
+                       organisation_name: String,
                        specialisation: String,
-                       hourCost: Double,
+                       hour_cost: Double,
                        createdAt: Instant,
                        updatedAt: Instant)
 

@@ -7,20 +7,18 @@ import java.time.Instant
 
 case class Employee(id: Long,
                     name: String,
-                    lastName: String,
-                    organisationName: String,
+                    organisation_name: String,
                     specialisation: String,
-                    hourCost: Double,
+                    hour_cost: Double,
                     createdAt: Instant,
                     updatedAt: Instant) {
 
   def toDTO: EmployeeDTO = EmployeeDTO(
     id,
     name,
-    lastName,
-    organisationName,
+    organisation_name,
     specialisation,
-    hourCost,
+    hour_cost,
     createdAt,
     updatedAt
   )
@@ -32,6 +30,6 @@ case class Employee(id: Long,
 object Employee {
   implicit val format: OFormat[Employee] = Json.format[Employee]
 
-  def tupled: ((Long, String, String, String, String, Double, Instant, Instant)) =>
+  def tupled: ((Long, String, String, String, Double, Instant, Instant)) =>
     Employee = (this.apply _).tupled
 }

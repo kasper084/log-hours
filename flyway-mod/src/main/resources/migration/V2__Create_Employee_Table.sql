@@ -3,8 +3,7 @@ CREATE TABLE employee
 (
     id                BIGSERIAL PRIMARY KEY,
     name              TEXT NOT NULL,
-    last_name         TEXT,
-    organisation_name TEXT,
+    organisation_name TEXT REFERENCES organisation (name),
     specialisation    TEXT NOT NULL,
     hour_cost         DOUBLE PRECISION,
     created_at        TIMESTAMP DEFAULT now(),

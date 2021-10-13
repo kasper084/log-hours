@@ -6,18 +6,18 @@ import play.api.libs.json.{Json, OFormat}
 import java.time.Instant
 
 case class ProjectTask(id: Long,
-                       projectId: Long,
+                       project_id: Long,
                        description: String,
-                       employeeId: Long,
+                       employee_id: Long,
                        hours: Double,
                        createdAt: Instant,
                        updatedAt: Instant) {
 
   def toDTO: ProjectTaskDTO = ProjectTaskDTO(
     id,
-    projectId,
+    project_id,
     description,
-    employeeId,
+    employee_id,
     hours,
     createdAt,
     updatedAt

@@ -5,7 +5,7 @@ import play.api.libs.json.{Json, OFormat}
 import java.time.Instant
 
 case class Project(id: Long,
-                   organisationName: String,
+                   organisation_name: String,
                    description: String,
                    createdAt: Instant,
                    updatedAt: Instant) {
