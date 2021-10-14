@@ -7,7 +7,7 @@ import java.time.Instant
 
 case class Employee(id: Long,
                     name: String,
-                    organisation_id: String,
+                    organisation_id: Option[Long],
                     specialisation: String,
                     hour_cost: Double,
                     createdAt: Instant,
@@ -30,6 +30,6 @@ case class Employee(id: Long,
 object Employee {
   implicit val format: OFormat[Employee] = Json.format[Employee]
 
-  def tupled: ((Long, String, String, String, Double, Instant, Instant)) =>
+  def tupled: ((Long, String, Option[Long], String, Double, Instant, Instant)) =>
     Employee = (this.apply _).tupled
 }
