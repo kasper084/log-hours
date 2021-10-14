@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS organisation;
-CREATE TABLE organisation
+DROP TABLE IF EXISTS organisations;
+CREATE TABLE organisations
 (
     id         BIGSERIAL PRIMARY KEY,
     name       TEXT NOT NULL,

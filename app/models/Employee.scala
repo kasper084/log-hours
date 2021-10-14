@@ -7,7 +7,7 @@ import java.time.Instant
 
 case class Employee(id: Long,
                     name: String,
-                    organisation_name: String,
+                    organisation_id: String,
                     specialisation: String,
                     hour_cost: Double,
                     createdAt: Instant,
@@ -16,7 +16,7 @@ case class Employee(id: Long,
   def toDTO: EmployeeDTO = EmployeeDTO(
     id,
     name,
-    organisation_name,
+    organisation_id,
     specialisation,
     hour_cost,
     createdAt,

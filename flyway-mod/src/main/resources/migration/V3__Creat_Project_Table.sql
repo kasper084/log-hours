@@ -1,8 +1,8 @@
-DROP TABLE IF EXISTS project;
-CREATE TABLE project
+DROP TABLE IF EXISTS projects;
+CREATE TABLE projects
 (
     id              BIGSERIAL PRIMARY KEY,
-    organisation_id BIGINT REFERENCES organisation,
+    organisation_id BIGINT REFERENCES organisations,
     description     TEXT NOT NULL,
     created_at      TIMESTAMP DEFAULT now(),
     updated_at      TIMESTAMP DEFAULT now()

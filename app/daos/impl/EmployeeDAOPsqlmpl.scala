@@ -1,6 +1,7 @@
 package daos.impl
 
 import daos.EmployeeDAO
+import demo.Tables._
 import models.Employee
 import monix.eval.Task
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfigProvider}
@@ -10,12 +11,15 @@ import javax.inject.Inject
 import scala.concurrent.ExecutionContext
 
 class EmployeeDAOPsqlmpl @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)
-                                  (implicit ex: ExecutionContext) extends EmployeeDAO with HasDatabaseConfigProvider[JdbcProfile] {
+                                  (implicit ex: ExecutionContext) extends EmployeeDAO
+  with HasDatabaseConfigProvider[JdbcProfile] {
 
   import daos.helpers.Helpers._
   import profile.api._
 
-  private val employeeQuery = ???
+  private val employeeQuery: Query[Employees, EmployeesRow, Seq] = TableQuery[Employees]
+
+  protected def queryReturningEmployees = employeeQuery returning employeeQuery
 
   override def getAll: Task[Seq[Employee]] = ???
 
