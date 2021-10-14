@@ -7,7 +7,7 @@ object EmployeeDAOConvector {
 
   implicit class EmployeeRowToModel(employeesRow: EmployeesRow) {
 
-    def toModel(): Employee = {
+   /* def toModel(): Employee = {
       Employee(
         id = employeesRow.id,
         name = employeesRow.name,
@@ -17,13 +17,13 @@ object EmployeeDAOConvector {
         createdAt = employeesRow.createdAt,
         updatedAt = employeesRow.updatedAt
       )
-    }
+    }*/
 
   }
 
   implicit class EmployeeModelToRow(employee: Employee) {
 
-    def toRow:EmployeesRow = {
+/*    def toRow:EmployeesRow = {
       EmployeesRow(
         id = employee.id,
         name = employee.name,
@@ -33,7 +33,7 @@ object EmployeeDAOConvector {
         createdAt = employee.createdAt,
         updatedAt = employee.updatedAt
       )
-    }
+    }*/
   }
 
 }
