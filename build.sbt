@@ -40,24 +40,24 @@ libraryDependencies ++= Seq(guice,
   "org.scalamock" %% "scalamock" % "5.1.0" % Test
 )
 
-Compile / sourceGenerators  += slick.taskValue
+sourceGenerators in Compile += slick.taskValue
 
 flywayClean := {
-  (flywaymod / flywayClean).value
+  (flywayClean in flywaymod).value
 }
 
 flywayMigrate := {
-  (flywaymod / flywayClean).value
+  (flywayMigrate in flywaymod).value
 }
 
 flywayInfo := {
-  (flywaymod / flywayClean).value
+  (flywayInfo in flywaymod).value
 }
 
 lazy val slick = taskKey[Seq[File]]("Generate Tables.scala")
 
 slick := {
-  val dir = (Compile / sourceManaged) value
+  val dir = (sourceManaged in Compile) value
   val outputDir = dir / "slick"
   val url = "jdbc:postgresql://localhost:5432/project1"
   val jdbcDriver = "org.postgresql.Driver"
@@ -66,10 +66,10 @@ slick := {
   val password = "12345"
   val pkg = "demo"
 
-  val cp = ( Compile / dependencyClasspath) value
+  val cp = (dependencyClasspath in Compile) value
   val s = streams value
 
-  ( Compile / runner).value.run("slick.codegen.SourceCodeGenerator",
+  (runner in Compile).value.run("slick.codegen.SourceCodeGenerator",
     cp.files,
     Array(slickDriver, jdbcDriver, url, outputDir.getPath, pkg, user, password),
     s.log).failed foreach (sys error _.getMessage)
