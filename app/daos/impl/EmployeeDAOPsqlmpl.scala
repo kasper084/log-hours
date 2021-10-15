@@ -1,6 +1,7 @@
 package daos.impl
 
 import daos.EmployeeDAO
+import daos.convectors.EmployeeDAOConvector.EmployeeRowToModel
 import demo.Tables._
 import models.Employee
 import monix.eval.Task
@@ -21,7 +22,10 @@ class EmployeeDAOPsqlmpl @Inject()(protected val dbConfigProvider: DatabaseConfi
 
   protected def queryReturningEmployees = employeeQuery returning employeeQuery
 
-  override def getAll: Task[Seq[Employee]] = ???
+  override def getAll: Task[Seq[Employee]] = db
+    .run(employeeQuery.result)
+    .map(_.map(_.toModel))
+    .wrapEx
 
   override def getById(id: Long): Task[Option[Employee]] = ???
 
