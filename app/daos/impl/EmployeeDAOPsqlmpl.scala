@@ -54,8 +54,8 @@ class EmployeeDAOPsqlmpl @Inject()(protected val dbConfigProvider: DatabaseConfi
     db.run(updateAction).wrapEx
   }
 
-  override def delete(id: Long): Task[Unit] = db.run(
-    employeeQuery.filter(_.id === id).delete
+  override def delete(ID: Long): Task[Unit] = db.run(
+    employeeQuery.filter(_.id === ID).delete
   ).wrapEx.map(_ => ())
 
 }

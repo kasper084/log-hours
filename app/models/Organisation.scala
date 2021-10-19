@@ -1,5 +1,6 @@
 package models
 
+import models.dtos.OrganisationDTO
 import play.api.libs.json.{Json, OFormat}
 
 import java.time.Instant
@@ -10,6 +11,17 @@ case class Organisation(id: Long,
                         info: String,
                         createdAt: Instant,
                         updatedAt: Instant) {
+
+  def toDTO: OrganisationDTO = {
+    OrganisationDTO(
+      id,
+      name,
+      address,
+      info,
+      createdAt,
+      updatedAt
+    )
+  }
 
   def updateModifiedField(): Organisation = this.copy(updatedAt = Instant.now())
 
