@@ -1,6 +1,8 @@
 import com.google.inject.AbstractModule
 import daos.EmployeeDAO
 import daos.impl.EmployeeDAOPsqlmpl
+import services.EmployeeService
+import services.impl.EmployeeServiceImpl
 
 import java.time.Clock
 
@@ -11,7 +13,7 @@ class Module extends AbstractModule {
     bind(classOf[Clock]).toInstance(Clock.systemDefaultZone)
 
     bind(classOf[EmployeeDAO]).to(classOf[EmployeeDAOPsqlmpl])
-
+    bind(classOf[EmployeeService]).to(classOf[EmployeeServiceImpl])
 
   }
 
