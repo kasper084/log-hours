@@ -1,7 +1,7 @@
 package daos.impl
 
 import daos.EmployeeDAO
-import daos.convectors.EmployeeDAOConvector.EmployeeRowToModel
+import daos.convectors.EmployeeDAOConvector.{EmployeeModelToRow, EmployeeRowToModel}
 import demo.Tables._
 import models.Employee
 import monix.eval.Task
@@ -27,11 +27,35 @@ class EmployeeDAOPsqlmpl @Inject()(protected val dbConfigProvider: DatabaseConfi
     .map(_.map(_.toModel))
     .wrapEx
 
-  override def getById(id: Long): Task[Option[Employee]] = ???
+  override def getById(id: Long): Task[Option[Employee]] = db
+    .run(employeeQuery
+      .filter(_.id === id)
+      .result.headOption)
+    .map(_.map(_.toModel))
+    .wrapEx
 
-  override def create(model: Employee): Task[Employee] = ???
+  override def create(employee: Employee): Task[Employee] = db
+    .run(queryReturningEmployees += employee.toRow)
+    .wrapEx
+    .map(_.toModel)
 
-  override def update(model: Employee): Task[Employee] = ???
+  override def update(employee: Employee): Task[Employee] = {
+    if (employee.id == 0)
+      throw new RuntimeException()
+    val userId = employee.id
+    val updateAction = employeeQuery.filter(_.id === userId)
+      .update(employee.updateModifiedField().toRow)
+      .map { rowsUpdated =>
+        employee.updateModifiedField()
+        if (rowsUpdated == 1)
+          employee.updateModifiedField()
+        else throw new RuntimeException()
+      }
+    db.run(updateAction).wrapEx
+  }
 
-  override def delete(Id: Long): Task[Unit] = ???
+  override def delete(id: Long): Task[Unit] = db.run(
+    employeeQuery.filter(_.id === id).delete
+  ).wrapEx.map(_ => ())
+
 }
