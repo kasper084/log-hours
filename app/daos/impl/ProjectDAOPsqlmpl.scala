@@ -55,7 +55,7 @@ class ProjectDAOPsqlmpl @Inject()(protected val dbConfigProvider: DatabaseConfig
 
   }
 
-  override def delete(id: Long): Task[Unit] = db.run(
-    projectQuery.filter(_.id === id).delete
+  override def delete(ID: Long): Task[Unit] = db.run(
+    projectQuery.filter(_.id === ID).delete
   ).wrapEx.map(_ => ())
 }

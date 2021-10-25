@@ -17,7 +17,8 @@ class Module extends AbstractModule {
 
     bind(classOf[EmployeeDAO]).to(classOf[EmployeeDAOPsqlmpl])
     bind(classOf[OrganisationDAO]).to(classOf[OrganisationDAOPsqlImpl])
-
+    bind(classOf[ProjectDAO]).to(classOf[ProjectDAOPsqlmpl])
+    bind(classOf[ProjectTaskDAO]).to(classOf[ProjectTaskDAOPsqlmpl])
 
   }
 
