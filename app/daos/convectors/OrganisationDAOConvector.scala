@@ -8,7 +8,7 @@ import java.sql.Timestamp
 object OrganisationDAOConvector {
 
   implicit class OrganisationRowToModel(organisationsRow: OrganisationsRow) {
-    def toModel(): Organisation  = {
+    def toModel: Organisation = {
       Organisation(
         id = organisationsRow.id,
         name = organisationsRow.name,

@@ -5,9 +5,9 @@ import play.api.libs.json.{Json, OWrites}
 import java.time.Instant
 
 case class ProjectTaskDTO(id: Long,
-                          project_id: Long,
+                          project_id: Option[Long],
                           description: String,
-                          employee_id: Long,
+                          employee_id: Option[Long],
                           hours: Double,
                           createdAt: Instant,
                           updatedAt: Instant)

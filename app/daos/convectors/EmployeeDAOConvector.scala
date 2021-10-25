@@ -9,7 +9,7 @@ object EmployeeDAOConvector {
 
   implicit class EmployeeRowToModel(employeesRow: EmployeesRow) {
 
-    def toModel(): Employee = {
+    def toModel: Employee = {
       Employee(
         id = employeesRow.id,
         name = employeesRow.name,

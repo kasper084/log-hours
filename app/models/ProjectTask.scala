@@ -6,9 +6,9 @@ import play.api.libs.json.{Json, OFormat}
 import java.time.Instant
 
 case class ProjectTask(id: Long,
-                       project_id: Long,
+                       project_id: Option[Long],
                        description: String,
-                       employee_id: Long,
+                       employee_id: Option[Long],
                        hours: Double,
                        createdAt: Instant,
                        updatedAt: Instant) {
@@ -30,7 +30,7 @@ case class ProjectTask(id: Long,
 object ProjectTask {
   implicit val format: OFormat[ProjectTask] = Json.format[ProjectTask]
 
-  def tupled: ((Long, Long, String, Long, Double, Instant, Instant)) =>
+  def tupled: ((Long, Option[Long], String, Option[Long], Double, Instant, Instant)) =>
     ProjectTask = (this.apply _).tupled
 
 }

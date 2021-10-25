@@ -5,8 +5,8 @@ CREATE TABLE project_tasks
     project_id  BIGINT REFERENCES projects,
     description TEXT NOT NULL,
     employee_id BIGINT REFERENCES employees,
-    hours       DOUBLE PRECISION,
-    created_at  TIMESTAMP DEFAULT now(),
-    updated_at  TIMESTAMP DEFAULT now()
+    hours       DOUBLE PRECISION NOT NULL,
+    created_at  TIMESTAMP DEFAULT now() NOT NULL,
+    updated_at  TIMESTAMP DEFAULT now() NOT NULL
 );
 
