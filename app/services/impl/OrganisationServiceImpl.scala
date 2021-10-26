@@ -15,6 +15,6 @@ class OrganisationServiceImpl @Inject()(organisationDAO: OrganisationDAO) extend
 
   override def getByID(id: Long): Task[OrganisationDTO] = organisationDAO.getById(id).map {
     case Some(organisation) => organisation.toDTO
-    case _ => throw NotFoundException("employee", s"id=$id")
+    case _ => throw NotFoundException("organisation", s"id=$id")
   }
 }

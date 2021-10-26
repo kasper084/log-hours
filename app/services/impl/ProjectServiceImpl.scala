@@ -15,6 +15,6 @@ class ProjectServiceImpl @Inject()(projectDAO: ProjectDAO) extends ProjectServic
 
   override def getByID(id: Long): Task[ProjectDTO] = projectDAO.getById(id).map {
     case Some(project) => project.toDTO
-    case _ => throw NotFoundException("employee", s"id=$id")
+    case _ => throw NotFoundException("project", s"id=$id")
   }
 }
