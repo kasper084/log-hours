@@ -16,6 +16,7 @@ object ProjectTaskDAOConvector {
         description = projectTasksRow.description,
         employee_id = projectTasksRow.employeeId,
         hours = projectTasksRow.hours,
+        cost = projectTasksRow.cost,
         createdAt = projectTasksRow.createdAt.toInstant,
         updatedAt = projectTasksRow.updatedAt.toInstant
       )
@@ -32,6 +33,7 @@ object ProjectTaskDAOConvector {
         description = projectTask.description,
         employeeId = projectTask.employee_id,
         hours = projectTask.hours,
+        cost = projectTask.cost,
         createdAt = Timestamp.from(projectTask.createdAt),
         updatedAt = Timestamp.from(projectTask.updatedAt)
       )

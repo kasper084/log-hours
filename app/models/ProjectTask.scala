@@ -10,6 +10,7 @@ case class ProjectTask(id: Long,
                        description: String,
                        employee_id: Option[Long],
                        hours: Double,
+                       cost: Double,
                        createdAt: Instant,
                        updatedAt: Instant) {
 
@@ -19,6 +20,7 @@ case class ProjectTask(id: Long,
     description,
     employee_id,
     hours,
+    cost,
     createdAt,
     updatedAt
   )
@@ -30,7 +32,7 @@ case class ProjectTask(id: Long,
 object ProjectTask {
   implicit val format: OFormat[ProjectTask] = Json.format[ProjectTask]
 
-  def tupled: ((Long, Option[Long], String, Option[Long], Double, Instant, Instant)) =>
+  def tupled: ((Long, Option[Long], String, Option[Long], Double, Double, Instant, Instant)) =>
     ProjectTask = (this.apply _).tupled
 
 }

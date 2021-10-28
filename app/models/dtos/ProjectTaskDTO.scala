@@ -9,6 +9,7 @@ case class ProjectTaskDTO(id: Long,
                           description: String,
                           employee_id: Option[Long],
                           hours: Double,
+                          cost: Double,
                           createdAt: Instant,
                           updatedAt: Instant)
 
